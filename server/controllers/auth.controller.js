@@ -12,7 +12,7 @@ const signin = async (req, res) => {
       return res.status(401).json({ error: "Email and password don't match." })
     }
     const token = jwt.sign({ _id: user._id, role: user.role }, config.jwtSecret, { expiresIn: '1d' })
-    rres.cookie('t', token, { maxAge: 24 * 60 * 60 * 1000, httpOnly: true })
+    res.cookie('t', token, { maxAge: 24 * 60 * 60 * 1000, httpOnly: true })
     return res.json({
       token,
       user: { _id: user._id, name: user.name, email: user.email, role: user.role },
