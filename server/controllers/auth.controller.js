@@ -12,7 +12,7 @@ const signin = async (req, res) => {
       return res.status(401).json({ error: "Email and password don't match." })
     }
     const token = jwt.sign({ _id: user._id, role: user.role }, config.jwtSecret, { expiresIn: '1d' })
-    res.cookie('t', token, { expire: new Date() + 9999 })
+    res.cookie('t', token, { maxAge: 24 * 60 * 60 * 1000, httpOnly: true })
     return res.json({
       token,
       user: { _id: user._id, name: user.name, email: user.email, role: user.role },
@@ -45,4 +45,11 @@ const hasAuthorization = (req, res, next) => {
   next()
 }
 
-export default { signin, signout, requireSignin, hasAuthorization }
+const isAdmin = (req, res, next) => {
+  if (!req.auth || req.auth.role !== 'admin') {
+    return res.status(403).json({ error: 'Admin access required' })
+  }
+  next()
+}
+
+export default { signin, signout, requireSignin, hasAuthorization, isAdmin }

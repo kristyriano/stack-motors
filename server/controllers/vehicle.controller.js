@@ -6,6 +6,8 @@ const FIELDS = ['make', 'model', 'year', 'mileage', 'price', 'vin', 'fuelType', 
 
 const pick = (body) => Object.fromEntries(FIELDS.filter((f) => body[f] !== undefined).map((f) => [f, body[f]]))
 
+const escapeRegex = (text) => text.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')
+
 // POST /api/vehicles  (signed-in users)
 const create = async (req, res) => {
   try {
@@ -22,7 +24,7 @@ const list = async (req, res) => {
   try {
     const filter = {}
     if (req.query.status) filter.status = req.query.status
-    if (req.query.make) filter.make = new RegExp(`^${req.query.make}$`, 'i')
+    if (req.query.make) filter.make = new RegExp(`^${escapeRegex(req.query.make)}$`, 'i')
     const vehicles = await Vehicle.find(filter).populate('owner', 'name').sort('-created')
     res.json(vehicles)
   } catch (err) {
