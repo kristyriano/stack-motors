@@ -9,7 +9,12 @@ const VehicleSchema = new mongoose.Schema(
     year: { type: Number, required: 'Year is required', min: 1980, max: currentYear + 1 },
     mileage: { type: Number, required: 'Mileage is required', min: 0 }, // km
     price: { type: Number, required: 'Price is required', min: 0 }, // CAD
-    vin: { type: String, trim: true, uppercase: true },
+    vin: {
+      type: String,
+      trim: true,
+      uppercase: true,
+      match: [/^[A-HJ-NPR-Z0-9]{17}$/, 'VIN must be 17 characters (letters and digits, no I, O or Q)'],
+    },
     fuelType: { type: String, enum: ['Gas', 'Diesel', 'Hybrid', 'Electric'], default: 'Gas' },
     transmission: { type: String, enum: ['Automatic', 'Manual'], default: 'Automatic' },
     color: { type: String, trim: true },
