@@ -45,4 +45,11 @@ const hasAuthorization = (req, res, next) => {
   next()
 }
 
-export default { signin, signout, requireSignin, hasAuthorization }
+const isAdmin = (req, res, next) => {
+  if (!req.auth || req.auth.role !== 'admin') {
+    return res.status(403).json({ error: 'Admin access required' })
+  }
+  next()
+}
+
+export default { signin, signout, requireSignin, hasAuthorization, isAdmin }

@@ -1,8 +1,10 @@
 {
   "info": {
+    "_postman_id": "2e4bea6b-4618-4f51-865e-9f9980a60aef",
     "name": "Stack Motors API",
     "description": "COMP229 Project Part 1 - API tests for users, auth and vehicles (CRUD). Run the whole collection with the Runner.",
-    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "_exporter_id": "59018065"
   },
   "item": [
     {
@@ -10,37 +12,6 @@
       "item": [
         {
           "name": "Register user (Kristy)",
-          "request": {
-            "method": "POST",
-            "header": [
-              {
-                "key": "Content-Type",
-                "value": "application/json"
-              }
-            ],
-            "url": {
-              "raw": "{{baseUrl}}/api/users",
-              "host": [
-                "{{baseUrl}}"
-              ],
-              "path": [
-                "api",
-                "users"
-              ]
-            },
-            "body": {
-              "mode": "raw",
-              "raw": "{\n  \"name\": \"Kristy Riano\",\n  \"email\": \"{{emailA}}\",\n  \"password\": \"secret123\"\n}",
-              "options": {
-                "raw": {
-                  "language": "json"
-                }
-              }
-            },
-            "auth": {
-              "type": "noauth"
-            }
-          },
           "event": [
             {
               "listen": "prerequest",
@@ -63,11 +34,11 @@
                 ]
               }
             }
-          ]
-        },
-        {
-          "name": "Register duplicate email (error)",
+          ],
           "request": {
+            "auth": {
+              "type": "noauth"
+            },
             "method": "POST",
             "header": [
               {
@@ -75,16 +46,6 @@
                 "value": "application/json"
               }
             ],
-            "url": {
-              "raw": "{{baseUrl}}/api/users",
-              "host": [
-                "{{baseUrl}}"
-              ],
-              "path": [
-                "api",
-                "users"
-              ]
-            },
             "body": {
               "mode": "raw",
               "raw": "{\n  \"name\": \"Kristy Riano\",\n  \"email\": \"{{emailA}}\",\n  \"password\": \"secret123\"\n}",
@@ -94,10 +55,21 @@
                 }
               }
             },
-            "auth": {
-              "type": "noauth"
+            "url": {
+              "raw": "{{baseUrl}}/api/users",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "users"
+              ]
             }
           },
+          "response": []
+        },
+        {
+          "name": "Register duplicate email (error)",
           "event": [
             {
               "listen": "test",
@@ -109,11 +81,11 @@
                 ]
               }
             }
-          ]
-        },
-        {
-          "name": "Register short password (error)",
+          ],
           "request": {
+            "auth": {
+              "type": "noauth"
+            },
             "method": "POST",
             "header": [
               {
@@ -121,6 +93,15 @@
                 "value": "application/json"
               }
             ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"Kristy Riano\",\n  \"email\": \"{{emailA}}\",\n  \"password\": \"secret123\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
             "url": {
               "raw": "{{baseUrl}}/api/users",
               "host": [
@@ -130,20 +111,12 @@
                 "api",
                 "users"
               ]
-            },
-            "body": {
-              "mode": "raw",
-              "raw": "{\n  \"name\": \"Test\",\n  \"email\": \"short@stackmotors.test\",\n  \"password\": \"123\"\n}",
-              "options": {
-                "raw": {
-                  "language": "json"
-                }
-              }
-            },
-            "auth": {
-              "type": "noauth"
             }
           },
+          "response": []
+        },
+        {
+          "name": "Register short password (error)",
           "event": [
             {
               "listen": "test",
@@ -154,11 +127,11 @@
                 ]
               }
             }
-          ]
-        },
-        {
-          "name": "Register second user (Shuai)",
+          ],
           "request": {
+            "auth": {
+              "type": "noauth"
+            },
             "method": "POST",
             "header": [
               {
@@ -166,6 +139,15 @@
                 "value": "application/json"
               }
             ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"Test\",\n  \"email\": \"short@stackmotors.test\",\n  \"password\": \"123\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
             "url": {
               "raw": "{{baseUrl}}/api/users",
               "host": [
@@ -175,20 +157,12 @@
                 "api",
                 "users"
               ]
-            },
-            "body": {
-              "mode": "raw",
-              "raw": "{\n  \"name\": \"Shuai Ju\",\n  \"email\": \"{{emailB}}\",\n  \"password\": \"secret123\"\n}",
-              "options": {
-                "raw": {
-                  "language": "json"
-                }
-              }
-            },
-            "auth": {
-              "type": "noauth"
             }
           },
+          "response": []
+        },
+        {
+          "name": "Register second user (Shuai)",
           "event": [
             {
               "listen": "test",
@@ -199,7 +173,39 @@
                 ]
               }
             }
-          ]
+          ],
+          "request": {
+            "auth": {
+              "type": "noauth"
+            },
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"Shuai Ju\",\n  \"email\": \"{{emailB}}\",\n  \"password\": \"secret123\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{baseUrl}}/api/users",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "users"
+              ]
+            }
+          },
+          "response": []
         }
       ]
     },
@@ -208,37 +214,6 @@
       "item": [
         {
           "name": "Sign in wrong password (error)",
-          "request": {
-            "method": "POST",
-            "header": [
-              {
-                "key": "Content-Type",
-                "value": "application/json"
-              }
-            ],
-            "url": {
-              "raw": "{{baseUrl}}/auth/signin",
-              "host": [
-                "{{baseUrl}}"
-              ],
-              "path": [
-                "auth",
-                "signin"
-              ]
-            },
-            "body": {
-              "mode": "raw",
-              "raw": "{\n  \"email\": \"{{emailA}}\",\n  \"password\": \"wrongpass\"\n}",
-              "options": {
-                "raw": {
-                  "language": "json"
-                }
-              }
-            },
-            "auth": {
-              "type": "noauth"
-            }
-          },
           "event": [
             {
               "listen": "test",
@@ -249,11 +224,11 @@
                 ]
               }
             }
-          ]
-        },
-        {
-          "name": "Sign in Kristy",
+          ],
           "request": {
+            "auth": {
+              "type": "noauth"
+            },
             "method": "POST",
             "header": [
               {
@@ -261,6 +236,15 @@
                 "value": "application/json"
               }
             ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"email\": \"{{emailA}}\",\n  \"password\": \"wrongpass\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
             "url": {
               "raw": "{{baseUrl}}/auth/signin",
               "host": [
@@ -270,20 +254,12 @@
                 "auth",
                 "signin"
               ]
-            },
-            "body": {
-              "mode": "raw",
-              "raw": "{\n  \"email\": \"{{emailA}}\",\n  \"password\": \"secret123\"\n}",
-              "options": {
-                "raw": {
-                  "language": "json"
-                }
-              }
-            },
-            "auth": {
-              "type": "noauth"
             }
           },
+          "response": []
+        },
+        {
+          "name": "Sign in Kristy",
           "event": [
             {
               "listen": "test",
@@ -299,11 +275,11 @@
                 ]
               }
             }
-          ]
-        },
-        {
-          "name": "Sign in Shuai",
+          ],
           "request": {
+            "auth": {
+              "type": "noauth"
+            },
             "method": "POST",
             "header": [
               {
@@ -311,6 +287,15 @@
                 "value": "application/json"
               }
             ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"email\": \"{{emailA}}\",\n  \"password\": \"secret123\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
             "url": {
               "raw": "{{baseUrl}}/auth/signin",
               "host": [
@@ -320,20 +305,12 @@
                 "auth",
                 "signin"
               ]
-            },
-            "body": {
-              "mode": "raw",
-              "raw": "{\n  \"email\": \"{{emailB}}\",\n  \"password\": \"secret123\"\n}",
-              "options": {
-                "raw": {
-                  "language": "json"
-                }
-              }
-            },
-            "auth": {
-              "type": "noauth"
             }
           },
+          "response": []
+        },
+        {
+          "name": "Sign in Shuai",
           "event": [
             {
               "listen": "test",
@@ -347,27 +324,42 @@
                 ]
               }
             }
-          ]
-        },
-        {
-          "name": "List users without token (error)",
+          ],
           "request": {
-            "method": "GET",
-            "header": [],
+            "auth": {
+              "type": "noauth"
+            },
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"email\": \"{{emailB}}\",\n  \"password\": \"secret123\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
             "url": {
-              "raw": "{{baseUrl}}/api/users",
+              "raw": "{{baseUrl}}/auth/signin",
               "host": [
                 "{{baseUrl}}"
               ],
               "path": [
-                "api",
-                "users"
+                "auth",
+                "signin"
               ]
-            },
-            "auth": {
-              "type": "noauth"
             }
           },
+          "response": []
+        },
+        {
+          "name": "List users without token (error)",
           "event": [
             {
               "listen": "test",
@@ -378,11 +370,11 @@
                 ]
               }
             }
-          ]
-        },
-        {
-          "name": "List users",
+          ],
           "request": {
+            "auth": {
+              "type": "noauth"
+            },
             "method": "GET",
             "header": [],
             "url": {
@@ -394,47 +386,24 @@
                 "api",
                 "users"
               ]
-            },
-            "auth": {
-              "type": "bearer",
-              "bearer": [
-                {
-                  "key": "token",
-                  "value": "{{tokenA}}",
-                  "type": "string"
-                }
-              ]
             }
           },
+          "response": []
+        },
+        {
+          "name": "List users as non-admin (forbidden)",
           "event": [
             {
               "listen": "test",
               "script": {
                 "type": "text/javascript",
                 "exec": [
-                  "pm.test('Status is 200', () => pm.response.to.have.status(200));",
-                  "pm.test('Is an array', () => pm.expect(pm.response.json()).to.be.an('array'));"
+                  "pm.test('Status is 403', () => pm.response.to.have.status(403));\npm.test('Admin access required', () => pm.expect(pm.response.json().error).to.include('Admin'));"
                 ]
               }
             }
-          ]
-        },
-        {
-          "name": "Read user",
+          ],
           "request": {
-            "method": "GET",
-            "header": [],
-            "url": {
-              "raw": "{{baseUrl}}/api/users/{{userIdA}}",
-              "host": [
-                "{{baseUrl}}"
-              ],
-              "path": [
-                "api",
-                "users",
-                "{{userIdA}}"
-              ]
-            },
             "auth": {
               "type": "bearer",
               "bearer": [
@@ -444,8 +413,24 @@
                   "type": "string"
                 }
               ]
+            },
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/api/users",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "users"
+              ]
             }
           },
+          "response": []
+        },
+        {
+          "name": "Read user",
           "event": [
             {
               "listen": "test",
@@ -457,18 +442,20 @@
                 ]
               }
             }
-          ]
-        },
-        {
-          "name": "Update own profile",
+          ],
           "request": {
-            "method": "PUT",
-            "header": [
-              {
-                "key": "Content-Type",
-                "value": "application/json"
-              }
-            ],
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{tokenA}}",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "GET",
+            "header": [],
             "url": {
               "raw": "{{baseUrl}}/api/users/{{userIdA}}",
               "host": [
@@ -479,27 +466,12 @@
                 "users",
                 "{{userIdA}}"
               ]
-            },
-            "body": {
-              "mode": "raw",
-              "raw": "{\n  \"name\": \"Kristy Riano (updated)\"\n}",
-              "options": {
-                "raw": {
-                  "language": "json"
-                }
-              }
-            },
-            "auth": {
-              "type": "bearer",
-              "bearer": [
-                {
-                  "key": "token",
-                  "value": "{{tokenA}}",
-                  "type": "string"
-                }
-              ]
             }
           },
+          "response": []
+        },
+        {
+          "name": "Update own profile",
           "event": [
             {
               "listen": "test",
@@ -511,11 +483,18 @@
                 ]
               }
             }
-          ]
-        },
-        {
-          "name": "Update another user's profile (forbidden)",
+          ],
           "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{tokenA}}",
+                  "type": "string"
+                }
+              ]
+            },
             "method": "PUT",
             "header": [
               {
@@ -523,6 +502,15 @@
                 "value": "application/json"
               }
             ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"Kristy Riano (updated)\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
             "url": {
               "raw": "{{baseUrl}}/api/users/{{userIdA}}",
               "host": [
@@ -533,27 +521,12 @@
                 "users",
                 "{{userIdA}}"
               ]
-            },
-            "body": {
-              "mode": "raw",
-              "raw": "{\n  \"name\": \"Hacked\"\n}",
-              "options": {
-                "raw": {
-                  "language": "json"
-                }
-              }
-            },
-            "auth": {
-              "type": "bearer",
-              "bearer": [
-                {
-                  "key": "token",
-                  "value": "{{tokenB}}",
-                  "type": "string"
-                }
-              ]
             }
           },
+          "response": []
+        },
+        {
+          "name": "Update another user's profile (forbidden)",
           "event": [
             {
               "listen": "test",
@@ -564,7 +537,47 @@
                 ]
               }
             }
-          ]
+          ],
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{tokenB}}",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "PUT",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"Hacked\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{baseUrl}}/api/users/{{userIdA}}",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "users",
+                "{{userIdA}}"
+              ]
+            }
+          },
+          "response": []
         }
       ]
     },
@@ -573,37 +586,6 @@
       "item": [
         {
           "name": "Create vehicle without token (error)",
-          "request": {
-            "method": "POST",
-            "header": [
-              {
-                "key": "Content-Type",
-                "value": "application/json"
-              }
-            ],
-            "url": {
-              "raw": "{{baseUrl}}/api/vehicles",
-              "host": [
-                "{{baseUrl}}"
-              ],
-              "path": [
-                "api",
-                "vehicles"
-              ]
-            },
-            "body": {
-              "mode": "raw",
-              "raw": "{\n  \"make\": \"Toyota\",\n  \"model\": \"Corolla LE\",\n  \"year\": 2021,\n  \"mileage\": 48200,\n  \"price\": 21995,\n  \"vin\": \"2T1BURHE0JC012345\",\n  \"fuelType\": \"Gas\",\n  \"transmission\": \"Automatic\",\n  \"color\": \"Silver\",\n  \"condition\": \"Good\",\n  \"status\": \"Available\",\n  \"description\": \"One owner, clean history.\"\n}",
-              "options": {
-                "raw": {
-                  "language": "json"
-                }
-              }
-            },
-            "auth": {
-              "type": "noauth"
-            }
-          },
           "event": [
             {
               "listen": "test",
@@ -614,11 +596,11 @@
                 ]
               }
             }
-          ]
-        },
-        {
-          "name": "Create vehicle",
+          ],
           "request": {
+            "auth": {
+              "type": "noauth"
+            },
             "method": "POST",
             "header": [
               {
@@ -626,16 +608,6 @@
                 "value": "application/json"
               }
             ],
-            "url": {
-              "raw": "{{baseUrl}}/api/vehicles",
-              "host": [
-                "{{baseUrl}}"
-              ],
-              "path": [
-                "api",
-                "vehicles"
-              ]
-            },
             "body": {
               "mode": "raw",
               "raw": "{\n  \"make\": \"Toyota\",\n  \"model\": \"Corolla LE\",\n  \"year\": 2021,\n  \"mileage\": 48200,\n  \"price\": 21995,\n  \"vin\": \"2T1BURHE0JC012345\",\n  \"fuelType\": \"Gas\",\n  \"transmission\": \"Automatic\",\n  \"color\": \"Silver\",\n  \"condition\": \"Good\",\n  \"status\": \"Available\",\n  \"description\": \"One owner, clean history.\"\n}",
@@ -645,17 +617,21 @@
                 }
               }
             },
-            "auth": {
-              "type": "bearer",
-              "bearer": [
-                {
-                  "key": "token",
-                  "value": "{{tokenA}}",
-                  "type": "string"
-                }
+            "url": {
+              "raw": "{{baseUrl}}/api/vehicles",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "vehicles"
               ]
             }
           },
+          "response": []
+        },
+        {
+          "name": "Create vehicle",
           "event": [
             {
               "listen": "test",
@@ -669,37 +645,8 @@
                 ]
               }
             }
-          ]
-        },
-        {
-          "name": "Create vehicle missing fields (error)",
+          ],
           "request": {
-            "method": "POST",
-            "header": [
-              {
-                "key": "Content-Type",
-                "value": "application/json"
-              }
-            ],
-            "url": {
-              "raw": "{{baseUrl}}/api/vehicles",
-              "host": [
-                "{{baseUrl}}"
-              ],
-              "path": [
-                "api",
-                "vehicles"
-              ]
-            },
-            "body": {
-              "mode": "raw",
-              "raw": "{\n  \"make\": \"Honda\"\n}",
-              "options": {
-                "raw": {
-                  "language": "json"
-                }
-              }
-            },
             "auth": {
               "type": "bearer",
               "bearer": [
@@ -709,8 +656,38 @@
                   "type": "string"
                 }
               ]
+            },
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"make\": \"Toyota\",\n  \"model\": \"Corolla LE\",\n  \"year\": 2021,\n  \"mileage\": 48200,\n  \"price\": 21995,\n  \"vin\": \"2T1BURHE0JC012345\",\n  \"fuelType\": \"Gas\",\n  \"transmission\": \"Automatic\",\n  \"color\": \"Silver\",\n  \"condition\": \"Good\",\n  \"status\": \"Available\",\n  \"description\": \"One owner, clean history.\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{baseUrl}}/api/vehicles",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "vehicles"
+              ]
             }
           },
+          "response": []
+        },
+        {
+          "name": "Create vehicle missing fields (error)",
           "event": [
             {
               "listen": "test",
@@ -721,13 +698,34 @@
                 ]
               }
             }
-          ]
-        },
-        {
-          "name": "List vehicles (public)",
+          ],
           "request": {
-            "method": "GET",
-            "header": [],
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{tokenA}}",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"make\": \"Honda\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
             "url": {
               "raw": "{{baseUrl}}/api/vehicles",
               "host": [
@@ -737,11 +735,12 @@
                 "api",
                 "vehicles"
               ]
-            },
-            "auth": {
-              "type": "noauth"
             }
           },
+          "response": []
+        },
+        {
+          "name": "List vehicles (public)",
           "event": [
             {
               "listen": "test",
@@ -753,11 +752,44 @@
                 ]
               }
             }
-          ]
+          ],
+          "request": {
+            "auth": {
+              "type": "noauth"
+            },
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/api/vehicles",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "vehicles"
+              ]
+            }
+          },
+          "response": []
         },
         {
           "name": "Filter vehicles by status",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test('Status is 200', () => pm.response.to.have.status(200));",
+                  "pm.test('All available', () => pm.response.json().forEach(v => pm.expect(v.status).to.eql('Available')));"
+                ]
+              }
+            }
+          ],
           "request": {
+            "auth": {
+              "type": "noauth"
+            },
             "method": "GET",
             "header": [],
             "url": {
@@ -775,11 +807,12 @@
                   "value": "Available"
                 }
               ]
-            },
-            "auth": {
-              "type": "noauth"
             }
           },
+          "response": []
+        },
+        {
+          "name": "Read vehicle (public)",
           "event": [
             {
               "listen": "test",
@@ -787,15 +820,15 @@
                 "type": "text/javascript",
                 "exec": [
                   "pm.test('Status is 200', () => pm.response.to.have.status(200));",
-                  "pm.test('All available', () => pm.response.json().forEach(v => pm.expect(v.status).to.eql('Available')));"
+                  "pm.test('Correct model', () => pm.expect(pm.response.json().model).to.eql('Corolla LE'));"
                 ]
               }
             }
-          ]
-        },
-        {
-          "name": "Read vehicle (public)",
+          ],
           "request": {
+            "auth": {
+              "type": "noauth"
+            },
             "method": "GET",
             "header": [],
             "url": {
@@ -808,65 +841,12 @@
                 "vehicles",
                 "{{vehicleId}}"
               ]
-            },
-            "auth": {
-              "type": "noauth"
             }
           },
-          "event": [
-            {
-              "listen": "test",
-              "script": {
-                "type": "text/javascript",
-                "exec": [
-                  "pm.test('Status is 200', () => pm.response.to.have.status(200));",
-                  "pm.test('Correct model', () => pm.expect(pm.response.json().model).to.eql('Corolla LE'));"
-                ]
-              }
-            }
-          ]
+          "response": []
         },
         {
           "name": "Update vehicle",
-          "request": {
-            "method": "PUT",
-            "header": [
-              {
-                "key": "Content-Type",
-                "value": "application/json"
-              }
-            ],
-            "url": {
-              "raw": "{{baseUrl}}/api/vehicles/{{vehicleId}}",
-              "host": [
-                "{{baseUrl}}"
-              ],
-              "path": [
-                "api",
-                "vehicles",
-                "{{vehicleId}}"
-              ]
-            },
-            "body": {
-              "mode": "raw",
-              "raw": "{\n  \"price\": 20995,\n  \"status\": \"Reserved\"\n}",
-              "options": {
-                "raw": {
-                  "language": "json"
-                }
-              }
-            },
-            "auth": {
-              "type": "bearer",
-              "bearer": [
-                {
-                  "key": "token",
-                  "value": "{{tokenA}}",
-                  "type": "string"
-                }
-              ]
-            }
-          },
           "event": [
             {
               "listen": "test",
@@ -879,116 +859,8 @@
                 ]
               }
             }
-          ]
-        },
-        {
-          "name": "Update someone else's vehicle (forbidden)",
+          ],
           "request": {
-            "method": "PUT",
-            "header": [
-              {
-                "key": "Content-Type",
-                "value": "application/json"
-              }
-            ],
-            "url": {
-              "raw": "{{baseUrl}}/api/vehicles/{{vehicleId}}",
-              "host": [
-                "{{baseUrl}}"
-              ],
-              "path": [
-                "api",
-                "vehicles",
-                "{{vehicleId}}"
-              ]
-            },
-            "body": {
-              "mode": "raw",
-              "raw": "{\n  \"price\": 1\n}",
-              "options": {
-                "raw": {
-                  "language": "json"
-                }
-              }
-            },
-            "auth": {
-              "type": "bearer",
-              "bearer": [
-                {
-                  "key": "token",
-                  "value": "{{tokenB}}",
-                  "type": "string"
-                }
-              ]
-            }
-          },
-          "event": [
-            {
-              "listen": "test",
-              "script": {
-                "type": "text/javascript",
-                "exec": [
-                  "pm.test('Status is 403', () => pm.response.to.have.status(403));"
-                ]
-              }
-            }
-          ]
-        },
-        {
-          "name": "Delete someone else's vehicle (forbidden)",
-          "request": {
-            "method": "DELETE",
-            "header": [],
-            "url": {
-              "raw": "{{baseUrl}}/api/vehicles/{{vehicleId}}",
-              "host": [
-                "{{baseUrl}}"
-              ],
-              "path": [
-                "api",
-                "vehicles",
-                "{{vehicleId}}"
-              ]
-            },
-            "auth": {
-              "type": "bearer",
-              "bearer": [
-                {
-                  "key": "token",
-                  "value": "{{tokenB}}",
-                  "type": "string"
-                }
-              ]
-            }
-          },
-          "event": [
-            {
-              "listen": "test",
-              "script": {
-                "type": "text/javascript",
-                "exec": [
-                  "pm.test('Status is 403', () => pm.response.to.have.status(403));"
-                ]
-              }
-            }
-          ]
-        },
-        {
-          "name": "Delete vehicle",
-          "request": {
-            "method": "DELETE",
-            "header": [],
-            "url": {
-              "raw": "{{baseUrl}}/api/vehicles/{{vehicleId}}",
-              "host": [
-                "{{baseUrl}}"
-              ],
-              "path": [
-                "api",
-                "vehicles",
-                "{{vehicleId}}"
-              ]
-            },
             "auth": {
               "type": "bearer",
               "bearer": [
@@ -998,8 +870,133 @@
                   "type": "string"
                 }
               ]
+            },
+            "method": "PUT",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"price\": 20995,\n  \"status\": \"Reserved\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{baseUrl}}/api/vehicles/{{vehicleId}}",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "vehicles",
+                "{{vehicleId}}"
+              ]
             }
           },
+          "response": []
+        },
+        {
+          "name": "Update someone else's vehicle (forbidden)",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test('Status is 403', () => pm.response.to.have.status(403));"
+                ]
+              }
+            }
+          ],
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{tokenB}}",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "PUT",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"price\": 1\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{baseUrl}}/api/vehicles/{{vehicleId}}",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "vehicles",
+                "{{vehicleId}}"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Delete someone else's vehicle (forbidden)",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test('Status is 403', () => pm.response.to.have.status(403));"
+                ]
+              }
+            }
+          ],
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{tokenB}}",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "DELETE",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/api/vehicles/{{vehicleId}}",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "vehicles",
+                "{{vehicleId}}"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Delete vehicle",
           "event": [
             {
               "listen": "test",
@@ -1010,11 +1007,51 @@
                 ]
               }
             }
-          ]
+          ],
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{tokenA}}",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "DELETE",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/api/vehicles/{{vehicleId}}",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "vehicles",
+                "{{vehicleId}}"
+              ]
+            }
+          },
+          "response": []
         },
         {
           "name": "Read deleted vehicle (not found)",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test('Status is 404', () => pm.response.to.have.status(404));"
+                ]
+              }
+            }
+          ],
           "request": {
+            "auth": {
+              "type": "noauth"
+            },
             "method": "GET",
             "header": [],
             "url": {
@@ -1027,22 +1064,9 @@
                 "vehicles",
                 "{{vehicleId}}"
               ]
-            },
-            "auth": {
-              "type": "noauth"
             }
           },
-          "event": [
-            {
-              "listen": "test",
-              "script": {
-                "type": "text/javascript",
-                "exec": [
-                  "pm.test('Status is 404', () => pm.response.to.have.status(404));"
-                ]
-              }
-            }
-          ]
+          "response": []
         }
       ]
     },
@@ -1051,7 +1075,21 @@
       "item": [
         {
           "name": "Sign out",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test('Status is 200', () => pm.response.to.have.status(200));"
+                ]
+              }
+            }
+          ],
           "request": {
+            "auth": {
+              "type": "noauth"
+            },
             "method": "GET",
             "header": [],
             "url": {
@@ -1063,11 +1101,12 @@
                 "auth",
                 "signout"
               ]
-            },
-            "auth": {
-              "type": "noauth"
             }
           },
+          "response": []
+        },
+        {
+          "name": "Delete own account (Shuai)",
           "event": [
             {
               "listen": "test",
@@ -1078,11 +1117,18 @@
                 ]
               }
             }
-          ]
-        },
-        {
-          "name": "Delete own account (Shuai)",
+          ],
           "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{tokenB}}",
+                  "type": "string"
+                }
+              ]
+            },
             "method": "DELETE",
             "header": [],
             "url": {
@@ -1095,29 +1141,9 @@
                 "users",
                 "{{userIdB}}"
               ]
-            },
-            "auth": {
-              "type": "bearer",
-              "bearer": [
-                {
-                  "key": "token",
-                  "value": "{{tokenB}}",
-                  "type": "string"
-                }
-              ]
             }
           },
-          "event": [
-            {
-              "listen": "test",
-              "script": {
-                "type": "text/javascript",
-                "exec": [
-                  "pm.test('Status is 200', () => pm.response.to.have.status(200));"
-                ]
-              }
-            }
-          ]
+          "response": []
         }
       ]
     }
